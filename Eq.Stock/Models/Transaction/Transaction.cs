@@ -1,75 +1,65 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Eq.StockDomain.Models.Enums;
 
 namespace Eq.StockDomain.Models.Entities
 {
     public class Transaction : ITransaction
     {
-        /// <summary>
-        /// Tolerance of transaction costs depends on Stock Type
-        /// This can be taken from DB or config dynamically in the future
-        /// </summary>
-        private const decimal BondTransactionCostTolerance = 100000;
-        private const decimal EquityTransactionCostTolerance = 200000;
+        private readonly decimal _fee;
+        private readonly decimal _tolerance;
+        private readonly Func<IEnumerable<ITransaction>> _transactionsProvider;
+
+        public IStock Stock { get; private set; }
 
         public decimal Cost
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return MarketValue * _fee; }
+        }
+
+        public bool IsRisky
+        {
+            get { return MarketValue < 0 || Cost > _tolerance; }
         }
 
         public decimal MarketValue
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public IStock Stock
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            get { return Stock.Quantity * Stock.Price; }
         }
 
         public decimal StockWeight
         {
             get
             {
-                throw new NotImplementedException();
+                var totalMarketValue = _transactionsProvider().Sum(x => x.MarketValue);
+                return MarketValue * 100 / totalMarketValue;
             }
         }
 
-        public decimal Tolerance
+        public Transaction(IStock stock) : this(stock, Wallet.GetTransactions)
+        {}
+
+        /// <summary>
+        /// For Unit Test purposes
+        /// </summary>
+        public Transaction(IStock stock, Func<IEnumerable<ITransaction>> transactionsProvider)
         {
-            get
+            if (stock == null)
             {
-                throw new NotImplementedException();
+                throw new ArgumentNullException(nameof(stock));
             }
+
+            if (!stock.IsValid())
+            {
+                throw new InvalidOperationException("Cannot create transaction when Stock is not valid");
+            }
+
+            Stock = stock;
+            _fee = Config.Config.Fee(stock.GetType());
+            _tolerance = Config.Config.CostTolerance(stock.GetType());
+            _transactionsProvider = transactionsProvider;
         }
 
-        public DateTime TransactionTimeStamp
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
-
-        public TransactionType TransactionType
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public override string ToString() => Stock.ToString();
     }
 }

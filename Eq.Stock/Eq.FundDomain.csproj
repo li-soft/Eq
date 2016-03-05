@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Config\Config.cs" />
     <Compile Include="Config\FundDomainInstaller.cs" />
     <Compile Include="Models\Entities\Bond.cs" />
     <Compile Include="Models\Entities\Equity.cs" />

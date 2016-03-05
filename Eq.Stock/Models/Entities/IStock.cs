@@ -5,6 +5,6 @@
         int Id { get; }
         decimal Price { get; }
         int Quantity { get; }
-        decimal Fee { get; }
+        bool IsValid();
     }
 }
