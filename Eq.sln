@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5C63B9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{A14989CD-79F0-49CE-A409-61BA3D3EB81C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.StockDomain", "Eq.ValuationDomain\Eq.StockDomain.csproj", "{FEFA261F-6E3E-49C1-A709-34953C501211}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.StockDomain", "Eq.StockDomain\Eq.StockDomain.csproj", "{FEFA261F-6E3E-49C1-A709-34953C501211}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{928FBE22-AA1A-4DB0-801E-BEE18BD8B564}"
 EndProject

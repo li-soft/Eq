@@ -114,7 +114,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Eq.ValuationDomain\Eq.StockDomain.csproj">
+    <ProjectReference Include="..\Eq.StockDomain\Eq.StockDomain.csproj">
       <Project>{fefa261f-6e3e-49c1-a709-34953c501211}</Project>
       <Name>Eq.StockDomain</Name>
     </ProjectReference>

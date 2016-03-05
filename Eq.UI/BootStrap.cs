@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
-using Eq.ValuationDomain.Config;
+using Eq.StockDomain.Config;
 
 namespace Eq.UI
 {
