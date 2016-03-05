@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace Eq.StockDomain.Models.Entities
 {
-    public class Equity : IStock
+    public class Equity : StockBase
     {
-        public int Id
+        public Equity(decimal price, int quantity) : base(price, quantity)
+        {}
+
+        public override decimal Fee
         {
             get
             {

@@ -27,7 +27,7 @@ namespace Eq.UI
         private static void InitializeContainer()
         {
             var container = new WindsorContainer();
-            container.Install(new ValuationDomainInstaller());
+            container.Install(new FundDomainInstaller());
         }
     }
 }

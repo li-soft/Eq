@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Eq.StockDomain.Models.Entities;
 
 namespace Eq.StockDomain.Services
 {
     public class TransactionService : ITransactionService
     {
+        public ITransaction CreateTransactionAndAddToWallet(IStock stock)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

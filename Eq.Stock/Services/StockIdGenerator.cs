@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Eq.StockDomain.Models.Entities;
 
 namespace Eq.StockDomain.Services
 {
     public class StockIdGenerator : IStockIdGenerator
     {
+        public IStock AssignIdToStock(IStock stock)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

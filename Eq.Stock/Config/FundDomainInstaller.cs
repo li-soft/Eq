@@ -6,7 +6,7 @@ using Eq.StockDomain.Models;
 
 namespace Eq.StockDomain.Config
 {
-    public class ValuationDomainInstaller : IWindsorInstaller
+    public class FundDomainInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {

@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Eq.StockDomain.Models;
 
 namespace Eq.StockDomain.Services
 {
     public interface IValuationService
     {
+        IValuationResult ValueWallet();
     }
 }

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Eq.StockDomain.Services
+namespace Eq.StockDomain.Models.Enums
 {
-    public interface IWalletService
+    public enum TransactionType
     {
+        Buy,
+        Sell
     }
 }
