@@ -114,9 +114,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Eq.StockDomain\Eq.StockDomain.csproj">
+    <ProjectReference Include="..\Eq.Stock\Eq.FundDomain.csproj">
       <Project>{fefa261f-6e3e-49c1-a709-34953c501211}</Project>
-      <Name>Eq.StockDomain</Name>
+      <Name>Eq.FundDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

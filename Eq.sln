@@ -7,17 +7,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.UI", "Eq.UI\Eq.UI.csproj
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{F3F3828C-363B-47F1-A2EB-1584370215AB}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5C63B9D5-79DB-4D7B-8B1F-2BFBEB2DC5AD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buisness Domains", "Buisness Domains", "{5C63B9D5-79DB-4D7B-8B1F-2BFBEB2DC5AD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{A14989CD-79F0-49CE-A409-61BA3D3EB81C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.StockDomain", "Eq.StockDomain\Eq.StockDomain.csproj", "{FEFA261F-6E3E-49C1-A709-34953C501211}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.FundDomain", "Eq.Stock\Eq.FundDomain.csproj", "{FEFA261F-6E3E-49C1-A709-34953C501211}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{928FBE22-AA1A-4DB0-801E-BEE18BD8B564}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{C7B6C2E7-CC8E-4A55-A660-59CB2B10C100}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{076DBE03-B93A-4B25-A652-C06426C101E6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Buisness Domains", "Buisness Domains", "{076DBE03-B93A-4B25-A652-C06426C101E6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{E87B5E2E-42EA-4CCD-9333-61AE33D431C8}"
 EndProject
@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.Core", "Eq.Core\Eq.Core.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.Test.Core", "Eq.Test.Core\Eq.Test.Core.csproj", "{63FFFA1F-18B9-469E-940B-08081BEAC39E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.Test.StockDomain", "Eq.Test.StockDomain\Eq.Test.StockDomain.csproj", "{30EE092E-FFB8-4CCB-9166-4DFEB0C5E4EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.Test.StockDomain", "Eq.Test.Stock\Eq.Test.StockDomain.csproj", "{30EE092E-FFB8-4CCB-9166-4DFEB0C5E4EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

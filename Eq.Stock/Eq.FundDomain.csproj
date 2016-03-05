@@ -49,14 +49,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config\ValuationDomainInstaller.cs" />
-    <Compile Include="Models\IValuationResult.cs" />
-    <Compile Include="Models\ValuationResult.cs" />
+    <Compile Include="Models\Entities\Bond.cs" />
+    <Compile Include="Models\Entities\Equity.cs" />
+    <Compile Include="Models\Entities\IStock.cs" />
+    <Compile Include="Models\Entities\ITransaction.cs" />
+    <Compile Include="Models\Entities\IWallet.cs" />
+    <Compile Include="Models\Entities\Transaction.cs" />
+    <Compile Include="Models\Entities\Wallet.cs" />
+    <Compile Include="Models\Valuation\IValuationResult.cs" />
+    <Compile Include="Models\Valuation\ValuationResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IStockIdGenerator.cs" />
+    <Compile Include="Services\ITransactionService.cs" />
     <Compile Include="Services\IValuationService.cs" />
+    <Compile Include="Services\IWalletService.cs" />
     <Compile Include="Services\StockIdGenerator.cs" />
+    <Compile Include="Services\TransactionService.cs" />
     <Compile Include="Services\ValuationService.cs" />
-    <Compile Include="Models\StockType.cs" />
+    <Compile Include="Models\Enums\StockType.cs" />
+    <Compile Include="Services\WalletService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
