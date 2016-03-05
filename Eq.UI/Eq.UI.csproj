@@ -114,6 +114,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Eq.Core\Eq.Core.csproj">
+      <Project>{3840dcb7-1a51-4e3c-87da-20f0476ccd8e}</Project>
+      <Name>Eq.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Eq.Stock\Eq.FundDomain.csproj">
       <Project>{fefa261f-6e3e-49c1-a709-34953c501211}</Project>
       <Name>Eq.FundDomain</Name>

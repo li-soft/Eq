@@ -71,7 +71,12 @@
     <Compile Include="Services\ValuationService.cs" />
     <Compile Include="Models\Enums\StockType.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Eq.Core\Eq.Core.csproj">
+      <Project>{3840dcb7-1a51-4e3c-87da-20f0476ccd8e}</Project>
+      <Name>Eq.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

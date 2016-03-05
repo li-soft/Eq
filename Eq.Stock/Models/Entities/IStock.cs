@@ -5,6 +5,7 @@
         int Id { get; }
         decimal Price { get; }
         int Quantity { get; }
+        void AssignId(int id);
         bool IsValid();
     }
 }

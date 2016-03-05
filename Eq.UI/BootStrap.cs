@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 using Eq.StockDomain.Config;
+using Eq.Core;
 
 namespace Eq.UI
 {
@@ -26,8 +27,8 @@ namespace Eq.UI
 
         private static void InitializeContainer()
         {
-            var container = new WindsorContainer();
-            container.Install(new FundDomainInstaller());
+            IoC.Container = new WindsorContainer();
+            IoC.Container.Install(new FundDomainInstaller());
         }
     }
 }

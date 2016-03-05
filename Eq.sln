@@ -27,7 +27,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.Core", "Eq.Core\Eq.Core.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.Test.Core", "Eq.Test.Core\Eq.Test.Core.csproj", "{63FFFA1F-18B9-469E-940B-08081BEAC39E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.Test.StockDomain", "Eq.Test.Stock\Eq.Test.StockDomain.csproj", "{30EE092E-FFB8-4CCB-9166-4DFEB0C5E4EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eq.Test.FundDomain", "Eq.Test.Stock\Eq.Test.FundDomain.csproj", "{30EE092E-FFB8-4CCB-9166-4DFEB0C5E4EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

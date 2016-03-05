@@ -12,6 +12,7 @@ namespace Eq.StockDomain.Config
         {
             container.Register(Component.For<IValuationService>().ImplementedBy<ValuationService>());
             container.Register(Component.For<IValuationResult>().ImplementedBy<ValuationResult>());
+            container.Register(Component.For<IStockIdGenerator>().ImplementedBy<StockIdGenerator>());
         }
     }
 }

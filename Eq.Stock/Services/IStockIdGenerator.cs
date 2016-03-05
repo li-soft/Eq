@@ -3,6 +3,6 @@ namespace Eq.StockDomain.Services
 {
     public interface IStockIdGenerator
     {
-        IStock AssignIdToStock(IStock stock);
+        void AssignIdToStock(IStock stock);
     }
 }
