@@ -2,6 +2,7 @@
 using Eq.StockDomain.Models.Entities;
 using Eq.StockDomain.Services;
 using System;
+using Eq.StockDomain.Services.Implementation;
 
 namespace Eq.Test.StockDomain.Services
 {
@@ -21,7 +22,7 @@ namespace Eq.Test.StockDomain.Services
         public void AssignId1ToBondSuccess()
         {
             //Arranhge
-            IStock bond = new Bond(1, 100);
+            StockBase bond = new Bond(1, 100);
 
             //Act
             _stockIdGenerator.AssignIdToStock(bond);
@@ -34,7 +35,7 @@ namespace Eq.Test.StockDomain.Services
         public void AssignId2ToBondSuccess()
         {
             //Arranhge
-            IStock bond = new Bond(1, 100);
+            StockBase bond = new Bond(1, 100);
 
             //Act
             _stockIdGenerator.AssignIdToStock(bond);
@@ -47,7 +48,7 @@ namespace Eq.Test.StockDomain.Services
         public void AssignId1ToEquitySuccess()
         {
             //Arranhge
-            IStock equity = new Equity(1, 100);
+            StockBase equity = new Equity(1, 100);
 
             //Act
             _stockIdGenerator.AssignIdToStock(equity);
@@ -60,7 +61,7 @@ namespace Eq.Test.StockDomain.Services
         public void AssignId3ToBondSuccess()
         {
             //Arranhge
-            IStock bond = new Bond(1, 100);
+            StockBase bond = new Bond(1, 100);
 
             //Act
             _stockIdGenerator.AssignIdToStock(bond);

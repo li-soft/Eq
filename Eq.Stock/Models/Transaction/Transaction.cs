@@ -1,48 +1,47 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using Eq.Core;
+using Eq.StockDomain.Models.Entities;
 
-namespace Eq.StockDomain.Models.Entities
+namespace Eq.StockDomain.Models.Transaction
 {
     public class Transaction : ITransaction
     {
         private readonly decimal _fee;
         private readonly decimal _tolerance;
-        private readonly Func<IEnumerable<ITransaction>> _transactionsProvider;
 
-        public IStock Stock { get; private set; }
-
-        public decimal Cost
-        {
-            get { return MarketValue * _fee; }
-        }
-
-        public bool IsRisky
-        {
-            get { return MarketValue < 0 || Cost > _tolerance; }
-        }
-
-        public decimal MarketValue
-        {
-            get { return Stock.Quantity * Stock.Price; }
-        }
-
+        /// <summary>
+        /// Transaction Stock
+        /// </summary>
+        public StockBase Stock { get; }
+        /// <summary>
+        /// Transaction Cost
+        /// </summary>
+        public decimal Cost => MarketValue * _fee;
+        /// <summary>
+        /// Is this transaction risky
+        /// </summary>
+        public bool IsRisky => MarketValue < 0 || Cost > _tolerance;
+        /// <summary>
+        /// Transaction Market Value
+        /// </summary>
+        public decimal MarketValue => Stock.Quantity * Stock.Price;
+        /// <summary>
+        /// Transaction Stock Weight
+        /// </summary>
         public decimal StockWeight
         {
             get
             {
-                var totalMarketValue = _transactionsProvider().Sum(x => x.MarketValue);
+                var totalMarketValue = Wallet.GetTransactions().Sum(x => x.MarketValue);
                 return MarketValue * 100 / totalMarketValue;
             }
         }
 
-        public Transaction(IStock stock) : this(stock, Wallet.GetTransactions)
-        {}
+        private IWallet _wallet;
+        private IWallet Wallet => _wallet ?? (_wallet = IoC.Resolve<IWallet>());
 
-        /// <summary>
-        /// For Unit Test purposes
-        /// </summary>
-        public Transaction(IStock stock, Func<IEnumerable<ITransaction>> transactionsProvider)
+        public Transaction(StockBase stock)
         {
             if (stock == null)
             {
@@ -57,9 +56,12 @@ namespace Eq.StockDomain.Models.Entities
             Stock = stock;
             _fee = Config.Config.Fee(stock.GetType());
             _tolerance = Config.Config.CostTolerance(stock.GetType());
-            _transactionsProvider = transactionsProvider;
         }
 
+        /// <summary>
+        /// Transaction Name same as Stock Name
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() => Stock.ToString();
     }
 }

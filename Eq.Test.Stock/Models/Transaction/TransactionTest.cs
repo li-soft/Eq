@@ -1,38 +1,40 @@
 ﻿using System;
-using Trans = Eq.StockDomain.Models.Entities.Transaction;
+using Trans = Eq.StockDomain.Models.Transaction.Transaction;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Eq.StockDomain.Models.Entities;
-using System.Collections.Generic;
+using Eq.Core;
+using Eq.StockDomain;
 
 namespace Eq.Test.StockDomain.Models.Transaction
 {
     [TestClass]
     public class TransactionTest
     {
-        private Trans _testTransactionWithBonds;
-        private Trans _testTransactionWithEquities;
-        private Func<IEnumerable<ITransaction>> transactionsProvider = () => 
-        {
-            var bond = new Bond(0.1m, 100);
-            bond.AssignId(1);
-            var equity = new Equity(1.3m, 1000);
-            equity.AssignId(1);
+        private static Trans _testTransactionWithBonds;
+        private static Trans _testTransactionWithEquities;
 
-            return new List<ITransaction> { new Trans(bond), new Trans(equity) };
-        };
-
-        [TestInitialize]
-        public void SetUp()
+        [ClassInitialize]
+        public static void SetUp(TestContext context)
         {
             var bond = new Bond(1.99m, 100);
             bond.AssignId(1);
 
-            _testTransactionWithBonds = new Trans(bond, transactionsProvider);
+            _testTransactionWithBonds = new Trans(bond);
 
             var equity = new Equity(2.79m, 101);
             equity.AssignId(1);
 
-            _testTransactionWithEquities = new Trans(equity, transactionsProvider);
+            _testTransactionWithEquities = new Trans(equity);
+
+            var wallet = new Wallet();
+            wallet.AddTransaction(_testTransactionWithEquities);
+
+            try
+            {
+                IoC.RegisterSingleInstance<IWallet>(wallet);
+            }
+            catch (Exception)
+            { }
         }
 
         [TestMethod]
@@ -89,10 +91,10 @@ namespace Eq.Test.StockDomain.Models.Transaction
             Assert.IsTrue(riskyTransaction.IsRisky);
         }
 
-        [TestMethod]
-        public void CheckStockWeightSuccess()
+        [ClassCleanup]
+        public static void Cleanup()
         {
-            Assert.AreEqual(21.51m, Math.Round(_testTransactionWithEquities.StockWeight, 2));
+            IoC.Release((Wallet)IoC.Resolve<IWallet>());
         }
     }
 }

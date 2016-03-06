@@ -1,11 +1,16 @@
-﻿using Eq.StockDomain.Models.Valuation;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Eq.StockDomain.Models.Enums;
 
-namespace Eq.StockDomain.Models
+namespace Eq.StockDomain.Models.Valuation
 {
+    /// <summary>
+    /// IValuationResult
+    /// </summary>
     public interface IValuationResult
     {
-        IStockSummary WalletSummary { get; }
+        /// <summary>
+        /// StockSummary per StockType deictionary
+        /// </summary>
         Dictionary<StockType, IStockSummary> StockSummaryPerStockType { get; }
     }
 }

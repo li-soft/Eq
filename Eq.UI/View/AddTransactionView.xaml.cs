@@ -13,15 +13,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Eq.UI.ViewModel.Implementation;
 
-namespace Eq.UI.Views
+namespace Eq.UI.View
 {
     /// <summary>
-    /// Interaction logic for AddTransactionControl.xaml
+    /// Interaction logic for AddTransactionView.xaml
     /// </summary>
-    public partial class AddTransactionControl : UserControl
+    public partial class AddTransactionView : UserControl
     {
-        public AddTransactionControl()
+        public AddTransactionView()
         {
             DataContext = new AddTransactionViewModel();
             InitializeComponent();

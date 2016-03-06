@@ -65,12 +65,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Config\ConfigTest.cs" />
+    <Compile Include="Config\FundDomainInstallerTest.cs" />
+    <Compile Include="Mock\StockMock.cs" />
     <Compile Include="Models\Entities\BondTest.cs" />
     <Compile Include="Models\Entities\EquityTest.cs" />
     <Compile Include="Models\Transaction\TransactionTest.cs" />
+    <Compile Include="Models\Valuation\StockSummaryTest.cs" />
+    <Compile Include="Models\Valuation\ValuationResultTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\StockIdGeneratorTest.cs" />
     <Compile Include="Services\TransactionServiceTest.cs" />
+    <Compile Include="Services\ValuationServiceTest.cs" />
+    <Compile Include="UnitTestBase.cs" />
     <Compile Include="WalletTest.cs" />
   </ItemGroup>
   <ItemGroup>

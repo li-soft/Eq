@@ -1,8 +1,8 @@
-﻿namespace Eq.StockDomain
+﻿namespace Eq.StockDomain.Models.Enums
 {
     public enum StockType
     {
-        Bond,
-        Equity
+        Bond = 1,
+        Equity = 2
     }
 }

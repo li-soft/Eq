@@ -35,7 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -45,13 +48,31 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Converter\BoolToColorConverterTest.cs" />
+    <Compile Include="Model\SummaryModelTest.cs" />
+    <Compile Include="Model\TransactionModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Eq.Core\Eq.Core.csproj">
+      <Project>{3840dcb7-1a51-4e3c-87da-20f0476ccd8e}</Project>
+      <Name>Eq.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Eq.Stock\Eq.FundDomain.csproj">
+      <Project>{fefa261f-6e3e-49c1-a709-34953c501211}</Project>
+      <Name>Eq.FundDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Eq.UI\Eq.UI.csproj">
+      <Project>{c6168fac-82fe-43c4-88b9-8d77c93589f5}</Project>
+      <Name>Eq.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

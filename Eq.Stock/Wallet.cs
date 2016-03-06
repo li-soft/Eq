@@ -1,24 +1,25 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
+using Eq.StockDomain.Models.Transaction;
 
-namespace Eq.StockDomain.Models.Entities
+namespace Eq.StockDomain
 {
     /// <summary>
     /// Fund wallet which contain all transactions
     /// </summary>
-    public static class Wallet
+    public class Wallet : IWallet
     {
-        private static ConcurrentBag<ITransaction> _transactions = new ConcurrentBag<ITransaction>();
+        private static readonly ConcurrentBag<ITransaction> Transactions = new ConcurrentBag<ITransaction>();
         
         /// <summary>
         /// Add transaction to Wallet
         /// </summary>
         /// <param name="transaction">Transaction which will be added to wallet</param>
-        public static void AddTransaction(ITransaction transaction)
+        public void AddTransaction(ITransaction transaction)
         {
             if (transaction != null)
             {
-                _transactions.Add(transaction);
+                Transactions.Add(transaction);
             }
         }
 
@@ -26,9 +27,9 @@ namespace Eq.StockDomain.Models.Entities
         /// Get all transaction whcich are currently in the wallet
         /// </summary>
         /// <returns>Collection of all transactions in the Wallet</returns>
-        public static IEnumerable<ITransaction> GetTransactions()
+        public IEnumerable<ITransaction> GetTransactions()
         {
-            return _transactions;
+            return Transactions;
         }
     }
 }

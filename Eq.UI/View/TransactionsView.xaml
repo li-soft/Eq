@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Eq.UI.View.TransactionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:Eq.UI.Converter"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <converters:BoolToColorConverter x:Key="BoolToColorConverter" />
+    </UserControl.Resources>
+    <GroupBox Header="All transactions">
+        <Grid>
+            <DataGrid ItemsSource="{Binding Transactions}" AutoGenerateColumns="False" IsReadOnly="True">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Setter Property="Background" Value="{Binding IsRisky, Converter={StaticResource BoolToColorConverter}}"/>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding StockType}" Header="Type" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding StockName}" Header="Name" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Price, StringFormat=F}" Header="Price $" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Quantity}" Header="Quantity pcs" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding MarketValue, StringFormat=F}" Header="Value $" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Cost, StringFormat=F}" Header="Cost $" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Weight, StringFormat=F}" Header="Weight %" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </GroupBox>
+</UserControl>

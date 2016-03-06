@@ -11,7 +11,7 @@ namespace Eq.Test.StockDomain.Models.Entities
         public void StockToStringOverrideMethodTestSuccess()
         {
             //Arrange
-            IStock equity = new Equity(12.9m, 100);
+            StockBase equity = new Equity(12.9m, 100);
 
             //Act
             var stockName = equity.ToString();

@@ -1,11 +1,10 @@
-﻿using Eq.StockDomain.Models.Enums;
-using System;
+﻿using Eq.StockDomain.Models.Entities;
 
-namespace Eq.StockDomain.Models.Entities
+namespace Eq.StockDomain.Models.Transaction
 {
     public interface ITransaction
     {
-        IStock Stock { get; }
+        StockBase Stock { get; }
         decimal Cost { get; }
         decimal MarketValue { get; }
         decimal StockWeight { get; }

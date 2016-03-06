@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Castle.Windsor;
-using Castle.Windsor.Installer;
 using Eq.StockDomain.Config;
 using Eq.Core;
 
@@ -25,10 +19,12 @@ namespace Eq.UI
             app.Run();
         }
 
+        /// <summary>
+        /// Initialize Windsor container and install all Fund Domain dependencies
+        /// </summary>
         private static void InitializeContainer()
         {
-            IoC.Container = new WindsorContainer();
-            IoC.Container.Install(new FundDomainInstaller());
+            IoC.Install(new FundDomainInstaller());
         }
     }
 }

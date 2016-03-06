@@ -1,21 +1,28 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Eq.StockDomain.Models.Entities;
-using Eq.StockDomain.Services;
 using Moq;
 using Eq.Core;
-using Castle.Windsor;
-using Castle.MicroKernel.Registration;
+using Eq.StockDomain;
+using Eq.StockDomain.Services.Implementation;
+using Eq.StockDomain.Services.Interfaces;
 
 namespace Eq.Test.StockDomain.Services
 {
     [TestClass]
     public class TransactionServiceTest
     {
-        [TestInitialize]
-        public void SetUp()
+        private static StockBase _stock;
+        private static Mock<IStockIdGenerator> _idGeneratorMock;
+
+        [ClassInitialize]
+        public static void SetUp(TestContext context)
         {
-            IoC.Container = new WindsorContainer();
+            _stock = new Bond(1, 1);
+            _stock.AssignId(1);
+            _idGeneratorMock = new Mock<IStockIdGenerator>(MockBehavior.Strict);
+            _idGeneratorMock.Setup(x => x.AssignIdToStock(_stock));
+            IoC.RegisterSingleInstance(_idGeneratorMock.Object);
+            IoC.RegisterSingleInstance<IWallet>(new Wallet());
         }
 
         [TestMethod]
@@ -25,37 +32,29 @@ namespace Eq.Test.StockDomain.Services
             var service = new TransactionService();
 
             //Act
-            var transaction = service.CreateTransactionAndAddToWallet(null);
+            service.CreateTransactionAndAddToWallet(null);
 
             //Assert
-            Assert.IsNull(transaction);
+            _idGeneratorMock.Verify(x => x.AssignIdToStock(_stock), Times.Never);
         }
 
         [TestMethod]
         public void CreateTransactionAndAddToWalletSuccess()
         {
             //Arrange
-            var walletTestValue = 0;
-            Action<ITransaction> walletAddTransaction = _ => walletTestValue = 1;
-            var bond = new Bond(1, 1);
-            bond.AssignId(1);
-            var idGeneratorMock = new Mock<IStockIdGenerator>(MockBehavior.Strict);
-            idGeneratorMock.Setup(x => x.AssignIdToStock(bond));
-            IoC.Container.Register(Component.For<IStockIdGenerator>().Instance(idGeneratorMock.Object));
-            var service = new TransactionService(walletAddTransaction);
+            var service = new TransactionService();
 
             //Act
-            var transaction = service.CreateTransactionAndAddToWallet(bond);
+            service.CreateTransactionAndAddToWallet(_stock);
 
             //Assert
-            idGeneratorMock.Verify();
-            Assert.IsNotNull(transaction);
-            Assert.AreEqual(0.02m, transaction.Cost);
-            Assert.IsFalse(transaction.IsRisky);
-            Assert.AreEqual(1m, transaction.MarketValue);
-            Assert.AreEqual("Bond1", transaction.ToString());
-            Assert.AreEqual(bond, transaction.Stock);
-            Assert.AreEqual(1, walletTestValue);
+            _idGeneratorMock.Verify(x => x.AssignIdToStock(_stock), Times.Once);
+        }
+
+        [ClassCleanup]
+        public static void Cleanup()
+        {
+            IoC.Release((Wallet)IoC.Resolve<IWallet>());
         }
     }
 }

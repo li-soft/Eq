@@ -1,6 +1,6 @@
-﻿using Eq.StockDomain.Models;
+﻿using Eq.StockDomain.Models.Valuation;
 
-namespace Eq.StockDomain.Services
+namespace Eq.StockDomain.Services.Interfaces
 {
     public interface IValuationService
     {
