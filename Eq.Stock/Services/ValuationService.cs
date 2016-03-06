@@ -42,8 +42,8 @@ namespace Eq.StockDomain.Services
 
             foreach(var typeGroup in groupedByTypeName)
             {
-                var stockType = (StockType)Enum.Parse(typeof(StockType), typeGroup.Key);
-                if (stockType == StockType.Unknown)
+                StockType stockType;
+                if (!Enum.TryParse(typeGroup.Key, out stockType))
                 {
                     //log or throw an exception but we are intrested only about B and E
                     continue;

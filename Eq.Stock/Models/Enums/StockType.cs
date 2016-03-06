@@ -2,7 +2,6 @@
 {
     public enum StockType
     {
-        Unknown,
         Bond,
         Equity
     }
