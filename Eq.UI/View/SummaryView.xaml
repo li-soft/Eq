@@ -10,7 +10,7 @@
         <Grid>
             <DataGrid ItemsSource="{Binding Summaries}" AutoGenerateColumns="false" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding TotalTypeName}" Header="Type" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding TypeName}" Header="Type" Width="*"/>
                     <DataGridTextColumn Binding="{Binding TotalStockWeight, StringFormat=F}" Header="Weight %" Width="*"/>
                     <DataGridTextColumn Binding="{Binding TotalMarketValue, StringFormat=F}" Header="Value $" Width="*"/>
                     <DataGridTextColumn Binding="{Binding TotalNumber}" Header="Number pcs" Width="*"/>
