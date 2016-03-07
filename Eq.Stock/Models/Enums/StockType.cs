@@ -2,7 +2,7 @@
 {
     public enum StockType
     {
-        Bond = 1,
-        Equity = 2
+        Bond = 0,
+        Equity = 1
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Eq.StockDomain.Models.Entities;
 using Eq.StockDomain.Models.Valuation;
 using Eq.StockDomain.Services.Implementation;
 using Eq.StockDomain.Services.Interfaces;

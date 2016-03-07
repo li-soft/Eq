@@ -33,7 +33,7 @@ namespace Eq.StockDomain.Services.Implementation
         /// </summary>
         /// <param name="stock">Stock entity</param>
         /// <returns>Proper Id</returns>
-        private int GetNextHi(StockBase stock)
+        private static int GetNextHi(StockBase stock)
         {
             lock(Lock)
             {

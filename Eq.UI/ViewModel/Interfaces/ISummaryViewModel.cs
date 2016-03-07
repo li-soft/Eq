@@ -8,6 +8,9 @@ namespace Eq.UI.ViewModel.Interfaces
     /// </summary>
     public interface ISummaryViewModel
     {
+        /// <summary>
+        /// Fund Valuation Summary collection
+        /// </summary>
         ObservableCollection<SummaryModel> Summaries { get; set; }
     }
 }

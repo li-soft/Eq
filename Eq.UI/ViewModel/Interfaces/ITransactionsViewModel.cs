@@ -8,6 +8,9 @@ namespace Eq.UI.ViewModel.Interfaces
     /// </summary>
     public interface ITransactionsViewModel
     {
+        /// <summary>
+        /// Valuated Transactions Collection
+        /// </summary>
         ObservableCollection<TransactionModel> Transactions { get; set; }
     }
 }
