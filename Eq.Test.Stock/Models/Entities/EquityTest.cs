@@ -29,9 +29,9 @@ namespace Eq.Test.StockDomain.Models.Entities
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void ThrowExceptionWhenQuantityIsLessThan1()
+        public void ThrowExceptionWhenQuantityIsZero()
         {
-            new Equity(12, -3);
+            new Equity(12, 0);
         }
     }
 }

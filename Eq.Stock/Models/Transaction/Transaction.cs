@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Eq.Core;
 using Eq.StockDomain.Models.Entities;
 
@@ -17,11 +16,15 @@ namespace Eq.StockDomain.Models.Transaction
         /// <summary>
         /// Transaction Cost
         /// </summary>
-        public decimal Cost => MarketValue * _fee;
+        public decimal Cost => Math.Abs(MarketValue * _fee);
         /// <summary>
         /// Is this transaction risky
         /// </summary>
         public bool IsRisky => MarketValue < 0 || Cost > _tolerance;
+        /// <summary>
+        /// Is this transaction on short position
+        /// </summary>
+        public bool IsShortPosittion => Stock.Quantity < 0;
         /// <summary>
         /// Transaction Market Value
         /// </summary>
@@ -33,10 +36,10 @@ namespace Eq.StockDomain.Models.Transaction
         {
             get
             {
-                var totalMarketValue = Wallet.GetTransactions().Sum(x => x.MarketValue);
-                return MarketValue * 100 / totalMarketValue;
+                var totalEquity = Wallet.TotalEquity;
+                return totalEquity == 0 ? 0 : Math.Abs(MarketValue) * 100 / totalEquity;
             }
-        }
+        } 
 
         private IWallet _wallet;
         private IWallet Wallet => _wallet ?? (_wallet = IoC.Resolve<IWallet>());

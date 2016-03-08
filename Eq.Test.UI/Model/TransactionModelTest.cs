@@ -21,7 +21,7 @@ namespace Eq.Test.UI.Model
             var transaction = new Transaction(stock);
             var wallet = new Wallet();
             wallet.AddTransaction(transaction);
-            IoC.RegisterSingleInstance<IWallet>(wallet);
+            IoC.RegisterSingleInstance<IWallet>(wallet, true);
 
             //Act
             var model = TransactionModel.MapFrom(transaction);
@@ -35,8 +35,6 @@ namespace Eq.Test.UI.Model
             Assert.AreEqual(1, model.Price);
             Assert.AreEqual(100, model.Weight);
             Assert.AreEqual(stock.ToString(), model.StockName);
-
-            IoC.Release(wallet);
         }
     }
 }

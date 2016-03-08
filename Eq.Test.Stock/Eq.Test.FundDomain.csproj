@@ -77,7 +77,6 @@
     <Compile Include="Services\StockIdGeneratorTest.cs" />
     <Compile Include="Services\TransactionServiceTest.cs" />
     <Compile Include="Services\ValuationServiceTest.cs" />
-    <Compile Include="UnitTestBase.cs" />
     <Compile Include="WalletTest.cs" />
   </ItemGroup>
   <ItemGroup>

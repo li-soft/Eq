@@ -29,12 +29,7 @@ namespace Eq.Test.StockDomain.Models.Transaction
             var wallet = new Wallet();
             wallet.AddTransaction(_testTransactionWithEquities);
 
-            try
-            {
-                IoC.RegisterSingleInstance<IWallet>(wallet);
-            }
-            catch (Exception)
-            { }
+            IoC.RegisterSingleInstance(wallet, true);
         }
 
         [TestMethod]
@@ -89,12 +84,6 @@ namespace Eq.Test.StockDomain.Models.Transaction
 
             //Assert
             Assert.IsTrue(riskyTransaction.IsRisky);
-        }
-
-        [ClassCleanup]
-        public static void Cleanup()
-        {
-            IoC.Release((Wallet)IoC.Resolve<IWallet>());
         }
     }
 }

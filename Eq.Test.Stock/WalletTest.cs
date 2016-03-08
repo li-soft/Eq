@@ -39,5 +39,26 @@ namespace Eq.Test.StockDomain
             Assert.AreEqual(1, transactions.Count);
             Assert.AreEqual(transaction, transactions.First());
         }
+
+        [TestMethod]
+        public void GetTotalEquitySuccess()
+        {
+            //Arrange 
+            var wallet = new Wallet();
+            var bond = new Bond(1, 1);
+            bond.AssignId(1);
+            var bondTr = new Transaction(bond);
+            var eq = new Equity(1, -1);
+            eq.AssignId(1);
+            var eqTr = new Transaction(bond);
+
+            //Act
+            wallet.AddTransaction(bondTr);
+            wallet.AddTransaction(eqTr);
+            var totalEquity = wallet.TotalEquity;
+
+            //Assert
+            Assert.AreEqual(3, totalEquity);
+        }
     }
 }

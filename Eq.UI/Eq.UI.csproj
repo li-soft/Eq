@@ -110,6 +110,8 @@
     <Compile Include="Converter\BoolToColorConverter.cs" />
     <Compile Include="Model\SummaryModel.cs" />
     <Compile Include="Model\TransactionModel.cs" />
+    <Compile Include="Validation\MoreThanZeroRule.cs" />
+    <Compile Include="Validation\NonZeroRule.cs" />
     <Compile Include="ViewModel\Implementation\AddTransactionViewModel.cs" />
     <Compile Include="ViewModel\Implementation\SummaryViewModel.cs" />
     <Compile Include="ViewModel\Implementation\TransactionsViewModel.cs" />

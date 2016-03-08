@@ -22,7 +22,7 @@ namespace Eq.Test.StockDomain.Services
             _idGeneratorMock = new Mock<IStockIdGenerator>(MockBehavior.Strict);
             _idGeneratorMock.Setup(x => x.AssignIdToStock(_stock));
             IoC.RegisterSingleInstance(_idGeneratorMock.Object);
-            IoC.RegisterSingleInstance<IWallet>(new Wallet());
+            IoC.RegisterSingleInstance<IWallet>(new Wallet(), true);
         }
 
         [TestMethod]
@@ -49,12 +49,6 @@ namespace Eq.Test.StockDomain.Services
 
             //Assert
             _idGeneratorMock.Verify(x => x.AssignIdToStock(_stock), Times.Once);
-        }
-
-        [ClassCleanup]
-        public static void Cleanup()
-        {
-            IoC.Release((Wallet)IoC.Resolve<IWallet>());
         }
     }
 }

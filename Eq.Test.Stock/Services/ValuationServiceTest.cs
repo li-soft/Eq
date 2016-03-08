@@ -12,12 +12,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Eq.Test.StockDomain.Services
 {
     [TestClass]
-    public class ValuationServiceTest : UnitTestBase
+    public class ValuationServiceTest
     {
         [ClassInitialize]
         public static void SetUp(TestContext context)
         {
-            TryRegisterWallet(null);
+            IoC.RegisterSingleInstance(new Wallet(), true);
         }
 
         [TestMethod]
@@ -36,8 +36,7 @@ namespace Eq.Test.StockDomain.Services
         public void GetValuationResultsSuccess()
         {
             //Arrange
-            IoC.Release((Wallet)IoC.Resolve<IWallet>());
-            TryRegisterWallet(null);
+            IoC.RegisterSingleInstance(new Wallet(), true);
             var bond = new Bond(1, 1);
             bond.AssignId(1);
             var transaction = new Transaction(bond);
@@ -48,8 +47,8 @@ namespace Eq.Test.StockDomain.Services
 
             //Assert
             Assert.IsNotNull(valuationResult);
-            Assert.AreEqual(3, valuationResult.StockSummaryPerStockType.Values.First().TotalStockValue);
-            Assert.AreEqual(3, valuationResult.StockSummaryPerStockType.Values.First().TotalNumber);
+            Assert.AreEqual(5, valuationResult.StockSummaryPerStockType.Values.First().TotalStockValue);
+            Assert.AreEqual(5, valuationResult.StockSummaryPerStockType.Values.First().TotalNumber);
             Assert.AreEqual(100, valuationResult.StockSummaryPerStockType.Values.First().TotalStockWeight);
             Assert.AreEqual(StockType.Bond, valuationResult.StockSummaryPerStockType.Keys.First());
         }

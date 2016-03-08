@@ -9,5 +9,6 @@ namespace Eq.StockDomain.Models.Transaction
         decimal MarketValue { get; }
         decimal StockWeight { get; }
         bool IsRisky { get; }
+        bool IsShortPosittion { get; }
     }
 }

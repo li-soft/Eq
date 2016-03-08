@@ -1,4 +1,5 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using System;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 
 namespace Eq.Core
@@ -34,9 +35,14 @@ namespace Eq.Core
         /// </summary>
         /// <typeparam name="T">Type to register</typeparam>
         /// <param name="instance">Concret instance to register</param>
-        public static void RegisterSingleInstance<T>(T instance) where T : class
+        /// <param name="canOverride">True if instance can be overriden by another</param>
+        public static void RegisterSingleInstance<T>(T instance, bool canOverride = false) where T : class
         {
-            Container.Register(Component.For<T>().Instance(instance).LifestyleSingleton());
+            var registrationDefinition = canOverride
+                ? Component.For<T>().Instance(instance).LifestyleSingleton().IsDefault().Named(Guid.NewGuid().ToString())
+                : Component.For<T>().Instance(instance).LifestyleSingleton();
+
+            Container.Register(registrationDefinition);
         }
 
         /// <summary>

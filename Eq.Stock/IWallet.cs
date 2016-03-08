@@ -9,6 +9,10 @@ namespace Eq.StockDomain
     public interface IWallet
     {
         /// <summary>
+        /// Total Wallet Equity
+        /// </summary>
+        decimal TotalEquity { get; }
+        /// <summary>
         /// Add one transaction to Wallet
         /// </summary>
         /// <param name="transaction"></param>

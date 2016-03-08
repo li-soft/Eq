@@ -28,9 +28,9 @@ namespace Eq.StockDomain.Models.Entities
                 throw new ArgumentException("Value cannot be less than 0.01", nameof(price));
             }
 
-            if (quantity < 1)
+            if (quantity == 0)
             {
-                throw new ArgumentException("Value cannot be less than 1", nameof(quantity));
+                throw new ArgumentException("Value cannot be 0", nameof(quantity));
             }
 
             Price = price;

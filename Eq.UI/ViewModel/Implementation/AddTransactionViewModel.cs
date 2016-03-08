@@ -119,8 +119,6 @@ namespace Eq.UI.ViewModel.Implementation
         #region Ctor
         public AddTransactionViewModel()
         {
-            Quantity = 1;
-
             CreateTransaction = new RelayCommand(() => 
             {
                 PrepareTransaction().Wait();
@@ -136,7 +134,7 @@ namespace Eq.UI.ViewModel.Implementation
         /// <summary>
         /// Can Create new Transaction only when Quantity and Price are bigger than zero
         /// </summary>
-        private bool CanCreateTransaction() => Quantity > 0 && Price > 0;
+        private bool CanCreateTransaction() => Quantity != 0 && Price > 0;
 
         /// <summary>
         /// Get task where Transaction vcreation is happened. Assign all recalculated transactions to TransactionsViewModel
@@ -146,9 +144,11 @@ namespace Eq.UI.ViewModel.Implementation
             return Task.Factory.StartNew(() =>
             {
                 var stockType = GetConvertedSelectedStockType();
+
                 var stock = StockBase.GetNew(stockType, Price, Quantity);
 
                 TransactionService.CreateTransactionAndAddToWallet(stock);
+
                 var mappedTransactions =
                     TransactionService.GetAllTransactions().Select(TransactionModel.MapFrom);
 
@@ -156,9 +156,9 @@ namespace Eq.UI.ViewModel.Implementation
                 {
                     TransactionsVm.Transactions = new ObservableCollection<TransactionModel>(mappedTransactions);
                 });
-                
+
                 Price = 0;
-                Quantity = 1;
+                Quantity = 0;
             });
         }
 
