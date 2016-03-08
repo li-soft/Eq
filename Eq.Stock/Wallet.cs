@@ -13,6 +13,9 @@ namespace Eq.StockDomain
     {
         private static readonly ConcurrentBag<ITransaction> Transactions = new ConcurrentBag<ITransaction>();
 
+        /// <summary>
+        /// Total Wallet Equity
+        /// </summary>
         public decimal TotalEquity { get; private set; }
 
         /// <summary>
