@@ -46,7 +46,7 @@ namespace Eq.Test.UI.Validation
             var result = validator.Validate("-3", CultureInfo.CurrentCulture);
 
             //Assert
-            Assert.AreEqual(new ValidationResult(false, "Value has to be positive"), result); 
+            Assert.AreEqual(new ValidationResult(false, "Value need to be more than 0.01"), result); 
         }
 
         [TestMethod]

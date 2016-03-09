@@ -26,8 +26,8 @@
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding TypeName}" Header="Type" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding TotalStockWeight, StringFormat=F}" Header="Weight %" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding TotalMarketValue, StringFormat=F}" Header="Value $" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding TotalStockWeight, StringFormat=P2}" Header="Weight" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding TotalMarketValue, StringFormat=C2}" Header="Value" Width="*"/>
                     <DataGridTextColumn Binding="{Binding TotalNumber}" Header="Number pcs" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>

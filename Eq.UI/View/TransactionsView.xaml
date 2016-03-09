@@ -31,11 +31,11 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding StockType}" Header="Type" Width="*"/>
                     <DataGridTextColumn Binding="{Binding StockName}" Header="Name" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Price, StringFormat=F}" Header="Price $" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="Price" Width="*"/>
                     <DataGridTextColumn Binding="{Binding Quantity}" Header="Quantity pcs" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding MarketValue, StringFormat=F}" Header="Value $" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Cost, StringFormat=F}" Header="Cost $" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Weight, StringFormat=F}" Header="Weight %" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding MarketValue, StringFormat=C2}" Header="Value" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Cost, StringFormat=C4}" Header="Cost" Width="*"/>
+                    <DataGridTextColumn Binding="{Binding Weight, StringFormat=P2}" Header="Weight" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

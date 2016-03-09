@@ -37,7 +37,7 @@ namespace Eq.StockDomain.Models.Transaction
             get
             {
                 var totalEquity = Wallet.TotalEquity;
-                return totalEquity == 0 ? 0 : Math.Abs(MarketValue) * 100 / totalEquity;
+                return totalEquity == 0 ? 0 : Math.Abs(MarketValue) / totalEquity;
             }
         } 
 

@@ -24,7 +24,7 @@ namespace Eq.UI.Validation
                 return _wrongValue;
             }
 
-            return parsedValue <= 0 ? new ValidationResult(false, "Value has to be positive") : new ValidationResult(true, null);
+            return parsedValue < 0.01m ? new ValidationResult(false, "Value need to be more than 0.01") : new ValidationResult(true, null);
         }
     }
 }
